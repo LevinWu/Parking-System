@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_Id" />
+    </Key>
+    <Property Name="Booking_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Space_Id" Type="int" Nullable="false" />
+    <Property Name="Entry_date" Type="date" Nullable="false" />
+    <Property Name="Exit_date" Type="date" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Space">
+    <Key>
+      <PropertyRef Name="Space_Id" />
+    </Key>
+    <Property Name="Space_Id" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="category" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Release_date" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Booking__Space_I__4AB81AF0">
+    <End Role="Space" Type="Self.Space" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Space">
+        <PropertyRef Name="Space_Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Space_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Space" EntityType="Self.Space" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Booking__Space_I__4AB81AF0" Association="Self.FK__Booking__Space_I__4AB81AF0">
+      <End Role="Space" EntitySet="Space" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

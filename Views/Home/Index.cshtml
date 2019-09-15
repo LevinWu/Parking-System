@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 @*style=" color: blue"*@>Easy Parking</h1>
+            @*<div class="col-md-8">*@
+            <p class="lead">Making your parking easier.</p>
+            &nbsp;
+            <img src="~/11.jpg" alt="11.jpg" width="1050" height="450">
+        </div>
+        <div class="col-md-2">
+            @if (!User.Identity.IsAuthenticated)
+            {<p> Log in to get started!!</p>
+                <p><a href="https://localhost:44376/Account/Login" class="btn btn-primary btn-lg">Login  &raquo;</a></p>
+            }
+        </div>
+
+        <div class="col-md-2">
+            @if (!User.Identity.IsAuthenticated)
+            {
+                @*<h2>Haven't got a account? </h2>*@
+                <p>
+                    Haven't got a account?
+                </p>
+                <p><a class="btn btn-primary btn-lg" href="https://localhost:44376/Account/Register">Register Now! &raquo;</a></p>
+            }
+        </div>
+
+        <div class="col-md-6">
+            @if (User.Identity.IsAuthenticated)
+            {
+                @*<h2>Booking Now ! </h2>
+                <p>
+
+                </p>*@
+                <p><a class="btn btn-primary btn-lg" href="https://localhost:44376/Bookings/Select"> Booking Now ! &raquo;</a></p>
+            }
+        </div>
+
+
+
+    </div>
+</div>    
+    @*<h1>Easy Parking</h1>
+       <p class="lead">Make your parking easier.</p>
+       <img src="~/hero1.jpg" alt="TT.png" width="800" height="300">*@
+
+    
+    @*@if (!User.Identity.IsAuthenticated)
+    {
+        <p><a href="https://localhost:44376/Account/Login" class="btn btn-primary btn-lg">Login &raquo;</a></p>
+    }
+</div>*@
+
+@*<div class="row">
+    <div class="col-md-8">
+        @if (User.Identity.IsAuthenticated)
+        {
+        <h2>Booking Now ! </h2>
+        <p>
+             
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="https://localhost:44376/Bookings/Select"> Booking &raquo;</a></p>
+        }</div>
+</div>*@
+
+@*<div class="row">
+    <div class="col-md-6">
+        @if (!User.Identity.IsAuthenticated)
+        {
+        <h2>Haven't got a account? </h2>
+        <p>
+           
+        </p>
+        <p><a class="btn btn-default" href="https://localhost:44376/Account/Register">Register Now! &raquo;</a></p>
+        }
+    </div>*@
+</div>

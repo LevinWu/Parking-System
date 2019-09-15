@@ -1,0 +1,77 @@
+﻿@model IEnumerable<FIT5032.Models.Booking>
+
+@{
+    ViewBag.Title = "History Bookings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Booking New", "Select")
+    </p>}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <p>Sorry, You have to login at first</p>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <table class="table">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.User_Id)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Space.Space_Id)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Space.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exit_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.User_Id)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Space_Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Space.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entry_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Exit_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Booking_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Booking_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Booking_Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
