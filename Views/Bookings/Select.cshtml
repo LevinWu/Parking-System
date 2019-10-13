@@ -8,38 +8,56 @@
 <h2>Select the parking location </h2>
 
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Release_date)
-        </th>
-        <th></th>
-    </tr>
+    <thead>
 
-    @foreach (var item in Model)
-    {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Release_date)
-            </td>
-            <td>
-                @Html.ActionLink("Select", "Create", new { id = item.Space_Id })
-                @*@Html.ActionLink("Details", "Details", new { id = item.Space_Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Space_Id })*@
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Release_date)
+            </th>
+            <th></th>
         </tr>
-    }
+        <
+    </thead>>
 
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Release_date)
+                </td>
+                <td>
+                    @Html.ActionLink("Select", "Create", new { id = item.Space_Id })
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Space_Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Space_Id })*@
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+}
+<link href="~/Content/DataTables/css/dataTables.bootstrap.min.css"
+      rel="stylesheet" />
 

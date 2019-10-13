@@ -13,10 +13,10 @@ namespace FIT5032.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities1 : DbContext
+    public partial class FEntities : DbContext
     {
-        public Entities1()
-            : base("name=Entities1")
+        public FEntities()
+            : base("name=FEntities")
         {
         }
     

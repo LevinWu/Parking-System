@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f14efc1400074312a311ff964ef74fec" Name="Diagram1">
+      <Diagram DiagramId="73b30f2d11494ea7800bd095497532d2" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Booking" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Space" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="Model.FK__Booking__Space_I__4AB81AF0" ManuallyRouted="false" />

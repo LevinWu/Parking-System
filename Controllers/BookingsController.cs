@@ -13,13 +13,12 @@ namespace FIT5032.Controllers
 {
     public class BookingsController : Controller
     {
-        private Entities1 db = new Entities1();
+        private readonly FEntities db = new FEntities();
 
         // GET: Bookings
         public ActionResult Index()
         {
             var UserId1 = User.Identity.GetUserId();
-            //var bookings = db.Bookings.Include(b => b.Space);
             var bookings = db.Bookings.Where ( b => b.User_Id == UserId1);
             return View(bookings.ToList());
         }

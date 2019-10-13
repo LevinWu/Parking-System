@@ -12,7 +12,7 @@ namespace FIT5032.Controllers
 {
     public class SpacesController : Controller
     {
-        private Entities1 db = new Entities1();
+        private readonly FEntities db = new FEntities();
 
         // GET: Spaces
         public ActionResult Index()

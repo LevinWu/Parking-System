@@ -156,7 +156,14 @@ namespace FIT5032.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+
+                    String toEmail = model.Email;
+                    String subject = "WELCOME";
+                    String contents = "successful registration";
+
+                    EmailSender es = new EmailSender();
+                    es.SendNotification(toEmail, subject, contents);
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

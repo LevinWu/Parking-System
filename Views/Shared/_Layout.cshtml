@@ -37,8 +37,10 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                    <li>@Html.ActionLink("Booking", "Select", "Bookings")</li>
-                    <li>@Html.ActionLink("History", "Index", "Bookings")</li>}
+                        <li>@Html.ActionLink("Booking", "Select", "Bookings")</li>
+                        <li>@Html.ActionLink("History", "Index", "Bookings")</li>
+                        <li>@Html.ActionLink("SendEmail", "SendEmail", "Home")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -54,6 +56,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap-datepicker")
     @RenderSection("scripts", required: false)
 </body>
 </html>

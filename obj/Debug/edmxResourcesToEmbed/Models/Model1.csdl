@@ -34,7 +34,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="FEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Bookings" EntityType="Self.Booking" />
     <EntitySet Name="Spaces" EntityType="Self.Space" />
     <AssociationSet Name="FK__Booking__Space_I__4AB81AF0" Association="Self.FK__Booking__Space_I__4AB81AF0">
