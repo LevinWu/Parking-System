@@ -412,6 +412,7 @@
     <Content Include="Content\DataTables\css\select.semanticui.min.css" />
     <Content Include="Content\DataTables\images\details_close.png" />
     <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\map-marker.png" />
     <Content Include="Content\DataTables\images\sort_asc.png" />
     <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
     <Content Include="Content\DataTables\images\sort_both.png" />
@@ -422,8 +423,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="hero1.jpg" />
-    <Content Include="HomeBac.jpg" />
     <Content Include="HomePicture.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -970,7 +969,6 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="T.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1017,6 +1015,7 @@
     <Content Include="Views\Spaces\Index.cshtml" />
     <Content Include="Views\Bookings\Select.cshtml" />
     <Content Include="Views\Home\SendEmail.cshtml" />
+    <Content Include="Views\Home\Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

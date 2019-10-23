@@ -11,12 +11,12 @@ namespace FIT5032.Models
     public class EmailSender
     {
         // Please use your API KEY here.
-        private const String API_KEY = "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";
+        private const String API_KEY = "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";
 
         public void Send(String toEmail, String subject, String contents)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("noreply@localhost.com", "FIT5032 Example Email User");
+            var from = new EmailAddress("noreply@easyparking.com", "Easy Parking Customer Service");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";
@@ -27,7 +27,7 @@ namespace FIT5032.Models
         public void SendA(String toEmail, String subject, String contents, string path, string filename)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("noreply@localhost.com", "FIT5032 Example Email User");
+            var from = new EmailAddress("noreply@easyparking.com", "Easy Parking Customer Service");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";
@@ -40,7 +40,7 @@ namespace FIT5032.Models
         public void SendNotification(String toEmail, String subject, String contents)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("noreply@easyparking.com", "Easy Parking");
+            var from = new EmailAddress("noreply@easyparking.com", "Easy Parking Customer Service");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";

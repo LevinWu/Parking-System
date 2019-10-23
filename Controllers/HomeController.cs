@@ -31,6 +31,14 @@ namespace FIT5032.Controllers
             return View();
         }
 
+        public ActionResult Map()
+        {
+            ViewBag.Message = "Your Map page.";
+
+            return View();
+        }
+
+
         public ActionResult SendEmail()
         {
             return View(new SendEmailViewModel());
