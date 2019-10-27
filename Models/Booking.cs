@@ -11,15 +11,22 @@ namespace FIT5032.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Booking
     {
         public int Booking_Id { get; set; }
         public string User_Id { get; set; }
         public int Space_Id { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Entry_date { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Exit_date { get; set; }
         public string Description { get; set; }
+        public Nullable<double> Rating { get; set; }
+        public string Comment { get; set; }
     
         public virtual Space Space { get; set; }
     }

@@ -66,9 +66,10 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Booking_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Booking_Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Booking_Id })
+                    @Html.ActionLink("Details", "Details", new { id = item.Booking_Id })
                     @Html.ActionLink("Delete", "Delete", new { id = item.Booking_Id })
+                    @Html.ActionLink("Rating", "Rating", new { id = item.Booking_Id })
                 </td>
             </tr>
         }

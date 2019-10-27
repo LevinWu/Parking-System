@@ -9,18 +9,6 @@
 
 </head>
 
-@*<body style="background-image:url('T.png');">
-
-    <h2>Background Image</h2>
-
-    <p>By default the background image will repeat itself if it is smaller than the element where it is specified, in this case the BODY element.</p>
-
-</body>*@
-
-
-
-
-
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -41,6 +29,14 @@
                         <li>@Html.ActionLink("History", "Index", "Bookings")</li>
                         <li>@Html.ActionLink("SendEmail", "SendEmail", "Home")</li>
                         <li>@Html.ActionLink("Map", "Map", "Home")</li>
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("ArrangeRole", "ArrangeRole", "Account")</li>
+                        }
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("BulkEmail", "BulkEmail", "Home")</li>
+                        }
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

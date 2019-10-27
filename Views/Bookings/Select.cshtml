@@ -5,49 +5,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Select the parking location </h2>
 
-<table class="table">
-    <thead>
 
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Release_date)
-            </th>
-            <th></th>
-        </tr>
-        <
-    </thead>>
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Select the parking location </h2>
 
-    <tbody>
+    <table class="table">
+        <thead>
 
-        @foreach (var item in Model)
-        {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Release_date)
-                </td>
-                <td>
-                    @Html.ActionLink("Select", "Create", new { id = item.Space_Id })
-                    @*@Html.ActionLink("Details", "Details", new { id = item.Space_Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Space_Id })*@
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Release_date)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+            <
+        </thead>>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Release_date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Select", "Create", new { id = item.Space_Id })
+                        @*@Html.ActionLink("Details", "Details", new { id = item.Space_Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Space_Id })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2> Sorry, you have to login first</h2>
+}
+
 @section Scripts {
 
     @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")

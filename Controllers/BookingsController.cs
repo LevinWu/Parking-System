@@ -13,7 +13,7 @@ namespace FIT5032.Controllers
 {
     public class BookingsController : Controller
     {
-        private readonly FEntities db = new FEntities();
+        private readonly ModelFinal db = new ModelFinal();
 
         // GET: Bookings
         public ActionResult Index()
@@ -47,10 +47,10 @@ namespace FIT5032.Controllers
         // GET: Bookings/Create
         public ActionResult Create(int id) {
 
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             var UserId = User.Identity.GetUserId();
             ViewBag.User_Id = UserId;
             ViewBag.Space_Id = id;
@@ -67,7 +67,6 @@ namespace FIT5032.Controllers
             if (ModelState.IsValid)
             {
                 db.Bookings.Add(booking);
-
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -135,6 +134,42 @@ namespace FIT5032.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // GET: Bookings/Rating/5
+        public ActionResult Rating(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            Booking booking = db.Bookings.Find(id);
+            if (booking.Rating == null)
+            {
+                ViewBag.Rating = 0;
+            }
+            else
+            {
+                ViewBag.Rating = booking.Rating;
+            }
+
+            return View(booking);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Rating(Booking booking)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(booking).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Space_Id = new SelectList(db.Spaces, "Space_Id", "Location", booking.Space_Id);
+            return View(booking);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

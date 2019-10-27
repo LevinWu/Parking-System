@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FIT5032.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FIT5032.Controllers
 {
@@ -17,6 +18,7 @@ namespace FIT5032.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext Db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -428,6 +430,33 @@ namespace FIT5032.Controllers
             }
 
             base.Dispose(disposing);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult ArrangeRole()
+        {
+            var roles = new SelectList(Db.Roles.ToList(), "Name", "Name");
+            ViewBag.Roles = roles;
+
+            var users = new SelectList(Db.Users.ToList(), "UserName", "UserName");
+            ViewBag.Users = users;
+
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ArrangeRole(FormCollection form)
+        {
+            // arrange the role to user
+            var userName = form["Users"];
+            var roleName = form["Roles"];
+            var user = Db.Users.Where(u => u.UserName == userName).FirstOrDefault();
+            var userId = user.Id;
+            await UserManager.AddToRoleAsync(userId, roleName);
+            return RedirectToAction("Index", "Home");
+
         }
 
         #region Helpers

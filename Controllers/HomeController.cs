@@ -1,5 +1,6 @@
 ﻿
 using FIT5032.Models;
+using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -61,6 +62,9 @@ namespace FIT5032.Controllers
                     {
                         String path = Path.Combine(Server.MapPath("~/Content/Attachment/"), attachment.FileName);
                         attachment.SaveAs(path);
+                        EmailSender es = new EmailSender();
+                        es.SendA(toEmail, subject, contents, path, attachment.FileName);
+
                     }
                     else
                     {
@@ -82,6 +86,58 @@ namespace FIT5032.Controllers
 
             return View();
         }
+
+        public ActionResult BulkEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult BulkEmail(FormCollection formCollection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    //get All Emails
+                    var users = db.Users.ToList();
+                    var Emaillist = new List<EmailAddress>();
+                    foreach (var user in users)
+                    {
+                        Emaillist.Add(new EmailAddress(user.Email, user.UserName));
+                    }
+
+                    var subject = "Notification";
+                    var contents = "This is the notification from Easy parking";
+                    var attachment = Request.Files["attachment"];
+                    if (attachment.ContentLength > 0)
+                    {
+                        String path = Path.Combine(Server.MapPath("~/Content/Attachment/"), attachment.FileName);
+                        attachment.SaveAs(path);
+                        BulkEmail bk = new BulkEmail();
+                        bk.SendBA(Emaillist, subject, contents,path, attachment.FileName);
+                    }
+                    else
+                    {
+                        BulkEmail bk = new BulkEmail();
+                        bk.SendB(Emaillist, subject, contents);
+                    }
+                    ViewBag.Result = "Email has been send.";
+                    ModelState.Clear();
+                    return View(new SendEmailViewModel());
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
+
 
     }
 }

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "BulkEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BulkEmail</h2>
+
+
+@using (Html.BeginForm("BulkEmail", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="form-horizontal" />
+    <h4>Send bulk email</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+
+    <div class="form-group">
+        @Html.Label("Upload file", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            <input type="file" name="attachment" style="margin-left:18%" />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Send" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+   
+

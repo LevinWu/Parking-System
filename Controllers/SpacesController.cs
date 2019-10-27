@@ -12,7 +12,7 @@ namespace FIT5032.Controllers
 {
     public class SpacesController : Controller
     {
-        private readonly FEntities db = new FEntities();
+        private readonly ModelFinal db = new ModelFinal();
 
         // GET: Spaces
         public ActionResult Index()
@@ -114,6 +114,7 @@ namespace FIT5032.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -30,33 +30,49 @@
 
         var geojson = {
             type: 'FeatureCollection',
-            features: [{
-                type: 'Feature',
-                //1
-                geometry: {
-                    type: 'Point',
-                    coordinates: [145.03960351775, -37.9203521]
+            features:
+                [{
+                    type: 'Feature',
+                    //1
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [145.03960351775, -37.9203521]
+                    },
+                    properties: {
+                        title: 'Wilson Parking',
+                        description: 'Bentleigh shopping center'
+                    }
                 },
-                properties: {
-                    title: 'Wilson Parking',
-                    description: 'Bentleigh shopping center'
-                }
-            },
-                //2
-                {
-                type: "Feature",
-                geometry: {
-                    type: 'Point',
-                    coordinates: [144.94112, -37.8203521]
-                },
-                properties: {
-                    title: 'centre Rd Parking',
-                    description: 'By streets'
-                }
-            
-               
+                    //2
+                    {
+                        type: "Feature",
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [144.94112, -37.8203521]
+                        },
+                        properties: {
+                            title: 'centre Rd Parking',
+                            description: 'By streets'
+                        }
 
-            }]
+                    },
+
+                    //3
+                    {
+                        type: "Feature",
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [144.72, -37.8203521]
+                        },
+                        properties: {
+                            title: 'Glen Rd Parking',
+                            description: 'By streets'
+                        }
+
+                  
+
+                    }
+                ]
         };
 
         // add markers to map
